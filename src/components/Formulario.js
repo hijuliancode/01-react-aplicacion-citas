@@ -9,10 +9,15 @@ const Formulario = () => {
     sintomas: ''
   })
   // Se ejecuta cada que el usuario escribe en un input
-  const handleChange = () => {
-    console.log('Escribiendo...');
-    
+  const handleChange = e => {
+    setCita({
+      ...cita,
+      [e.target.name]: e.target.value
+    })
   }
+  // Extraer valores de cita
+  const { mascota, propietario, fecha, hora, sintomas } = cita
+
   return (
     <Fragment>
       <h2>Crear cita</h2>
@@ -24,6 +29,7 @@ const Formulario = () => {
           className="u-full-width"
           placeholder="Nombre mascota"
           onChange={handleChange}
+          value={mascota}
         />
         <label>Nombre propietario:</label>
         <input
@@ -32,6 +38,7 @@ const Formulario = () => {
           className="u-full-width"
           placeholder="Nombre propietario"
           onChange={handleChange}
+          value={propietario}
         />
         <label>Fecha:</label>
         <input
@@ -39,6 +46,7 @@ const Formulario = () => {
           name="fecha"
           className="u-full-width"
           onChange={handleChange}
+          value={fecha}
         />
         <label>Hora:</label>
         <input
@@ -46,12 +54,15 @@ const Formulario = () => {
           name="hora"
           className="u-full-width"
           onChange={handleChange}
+          value={hora}
         />
         <label>Sintomas:</label>
         <textarea
           name="sintomas"
           className="u-full-width"
-          onChange={handleChange}></textarea>
+          onChange={handleChange}
+          value={sintomas}
+          ></textarea>
         <button
           type="submit"
           className="u-full-width button-primary"
@@ -60,5 +71,5 @@ const Formulario = () => {
     </Fragment>
   );
 }
- 
+
 export default Formulario;
