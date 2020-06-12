@@ -8,6 +8,7 @@ const Formulario = () => {
     hora: '',
     sintomas: ''
   })
+  const [error, setError] = useState(false)
   // Se ejecuta cada que el usuario escribe en un input
   const handleChange = e => {
     setCita({
@@ -23,6 +24,14 @@ const Formulario = () => {
     e.preventDefault()
 
     // 01 Validar
+    if ( mascota.trim() === '' ||
+         propietario.trim() === '' ||
+         fecha.trim() === '' ||
+         hora.trim() === '' ||
+         sintomas.trim() === '') {
+      setError(true)
+      return;
+    }
 
     // 02 Asignar Id/Key
 
@@ -34,6 +43,7 @@ const Formulario = () => {
   return (
     <Fragment>
       <h2>Crear cita</h2>
+      { error ? <p className="alerta-error">Todos los campos son obligatorios</p> : null }
       <form
         onSubmit={submitCita}
         >
