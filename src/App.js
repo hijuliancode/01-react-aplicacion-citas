@@ -1,10 +1,15 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import Formulario from "./components/Formulario";
 import Cita from "./components/Cita";
 
 function App() {
   // Lista de citas
   const [citas, guardarCitas] = useState([])
+
+  // Use Effect para realizar ciertas operaciones cuando el state cambia
+  useEffect(() => {
+
+  }, [citas])
 
   // Lee las citas actuales y agrega la nueva
   const crearCita = cita => {
